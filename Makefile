@@ -5,10 +5,8 @@ LATEX = xelatex
 all: mkdir pdf
 
 mkdir:
-	mkdir -p out
+	mkdir -p doc
 
 pdf: guide.tex
-	$(LATEX) -output-directory="out" $<
+	$(LATEX) -output-directory="doc" $<
 
-clean:
-	rm -rf out

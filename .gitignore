@@ -1,5 +1,7 @@
 /.texpadtmp/
 /fonts/
-*.pdf
+/*.pdf
 *.DS_Store
-/out
+/doc/*.log
+/doc/*.aux
+/doc/*.out
