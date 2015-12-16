@@ -1,0 +1,229 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[oneside,final]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{ctex}
+\usepackage{cjkfonts}
+\usepackage{xltxtra}	% to use \XeLeTeX
+
+% hyperlink
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
+% for code example
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+%  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+%  keywordstyle=\color{blue},       % keyword style
+%  language=Octave,                 % the language of the code
+%  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2                        % sets default tabsize to 2 spaces
+%  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\linespread{1.5}
+
+\begin{document}
+
+\title{cjkfonts 宏包}
+\author{Freeman Zhang}
+\date{\today{} v0.1}
+
+\maketitle
+
+\section{简介}
+
+\href{https://github.com/zhanggyb/cjkfonts}{cjkfonts} 是一个简单的\XeLaTeX{}宏包，其中预设了一些字体配置，可用于排版包含中日韩（CJK）文字的文档。
+
+这一宏包将\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}设置为默认西文和CJK字体，包括正文、无衬线、等宽，并且默认使用细字体来获得更好的屏幕阅读体验。排版效果如下：
+
+\begin{center}
+  Normal Text 正常文本 \\
+  \vspace{1em}
+  \textbf{Bold Text 粗体文本} \\
+  \vspace{1em}
+  \textit{Italic Text 斜体文本} \\
+  \vspace{1em}
+  \textbf{\textit{BoldItalic Text 粗斜体文本}}
+\end{center}
+
+除了\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}，这一宏包还引用了其它一些出色的开源字体方案来丰富排版效果，其使用的所有字体有：
+
+\begin{itemize}
+\item {\SourceHanSansSC \href{https://github.com/adobe-fonts/source-han-sans}{Adobe思源黑体}}\footnote{简体中文字体}
+\item {\Roboto \href{https://github.com/google/roboto}{Google Roboto}}  
+\item {\RobotoCondensed \href{https://github.com/google/roboto}{Google RobotoCondensed}}
+\item {\SourceSansPro \href{https://github.com/adobe-fonts/source-sans-pro}{Adobe Source Sans Pro}}  
+\item {\SourceSerifPro \href{https://github.com/adobe-fonts/source-serif-pro}{Adobe Serif Pro}}
+\item {\SourceCodePro \href{https://github.com/adobe-fonts/source-code-pro}{Adobe Source Code Pro}}
+\end{itemize}
+
+\section{使用}
+
+\subsection{签出源码}
+
+\begin{lstlisting}[language=sh]
+$ git clone https://github.com/zhanggyb/cjkfonts
+\end{lstlisting}
+
+\subsection{准备字体文件}
+
+运行{\SourceCodePro bootstrap.sh}脚本来自动将需要的字体文件下载到
+{\SourceCodePro fonts}目录，这一脚本依赖git和curl。
+
+\begin{lstlisting}[language=sh]
+$ ./bootstrap.sh
+\end{lstlisting}
+
+也可以自行下载并放在 fonts 目录。
+
+\subsection{复制文件}
+
+直接将{\SourceCodePro cjkfonts.sty}以及{\SourceCodePro fonts}目录复制到你的文档目录。
+
+\subsection{使用宏包}
+
+与其它\LaTeX{}宏包一样，引入{\SourceCodePro cjkfonts}宏包只需要在导言区使用：
+
+\begin{lstlisting}
+\usepackage{cjkfonts}
+\end{lstlisting}
+
+为了更好的屏幕阅读体验，cjkfonts 默认使用纤细\footnote{标注为Thin或者Light的字体文件，例如SourceSansPro-Light.otf}的字体，如果你需要用正常粗细的效果，可以使用选项：
+
+\begin{lstlisting}
+\usepackage[medium]{cjkfonts}
+\end{lstlisting}
+
+\subsection{示例}
+
+这里是一个最简单的示例:
+
+\begin{lstlisting}[language=TeX]
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass{article}
+\usepackage{cjkfonts}
+
+\begin{document}
+\begin{center}
+  Normal Text 正常文本 \\
+  \vspace{1em}
+  \textbf{Bold Text 粗体文本} \\
+  \vspace{1em}
+  \textit{Italic Text 斜体文本} \\
+  \vspace{1em}
+  \textbf{\textit{BoldItalic Text 粗斜体文本}}
+\end{center}
+\end{document}
+\end{lstlisting}
+
+\textbf{注意：}需要使用\XeLaTeX{}排版引擎来编译源码。
+
+\section{手册}
+
+\subsection{命令}
+
+\subsubsection{设置字体目录}
+
+使用 \verb!\setfontdir{<path>}!来设置字体文件所在目录，默认为同级的 \verb!fonts/!。
+
+\subsection{默认字体}
+
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}
+
+\subsection{字体族}
+
+使用同名的字体族来选择字体：
+
+\begin{itemize}
+	\item {\SourceCodePro \verb!\Roboto!}
+	\item {\SourceCodePro \verb!\RobotoCondensed!}
+	\item {\SourceCodePro \verb!\SourceSansPro!}
+	\item {\SourceCodePro \verb!\SourceSerifPro!}
+	\item {\SourceCodePro \verb!\SourceCodePro!}
+	\item {\SourceCodePro \verb!\SourceHanSansSC!}
+\end{itemize}
+
+例如：
+
+{\SourceCodePro \verb!{\Roboto Now use Roboto font}!} --- {\Roboto Now use Roboto font}
+
+\subsection{CJK支持}
+
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}已经支持CJK文本。
+
+例如：
+
+\begin{center}
+  \begin{tabular}{ r l }
+    \textbf{简体中文} & 每个人生来平等，享有相同的地位和权利。 \\
+    \textbf{繁體中文} & 每個人生來平等，享有相同的地位和權利。 \\
+    \textbf{한국의} & 모두가 동일한 태어나 같은 지위와 권리 를 가지고 있다。\\
+	\textbf{日本語} & すべての人間は自由であり、かつ、尊厳と権利とについて平等である。\\
+  \end{tabular}
+\end{center}
+
+\subsection{程序代码}
+
+程序代码使用 Adobe Code Pro 字体：
+
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#define N 10
+
+int main()
+{
+    int i;
+
+    // Line comment.
+    puts("Hello world!");
+
+    for (i = 0; i < N; i++)
+    {
+        puts("LaTeX is also great for programmers!");
+    }
+
+    return 0;
+}
+\end{lstlisting}
+
+\section{已知问题}
+
+\begin{enumerate}
+	\item bootstrap.sh 脚本只在OS X和Linux系统上测试过。
+\end{enumerate}
+
+\section{代码实现}
+
+cjkfonts的程序代码非常简单，只是利用fontspec和xeCJK设置排版字体：
+
+\lstinputlisting[language=TeX]{cjkfonts.sty}
+
+\end{document}

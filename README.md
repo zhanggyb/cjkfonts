@@ -1,2 +1,2 @@
 # cjkfonts
-A XeLaTeX package for typesetting CJK documents
+A simple XeLaTeX package for typesetting CJK documents

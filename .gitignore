@@ -1,0 +1,5 @@
+/.texpadtmp/
+/fonts/
+*.pdf
+*.DS_Store
+/out
