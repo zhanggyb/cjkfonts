@@ -14,9 +14,11 @@ Download and install a TeX document system for your platform from: http://www.tu
 
 You can run `make` to re-comiple the user guide (generate guide.pdf in doc/).
 
-For more information, please check the [user guide](https://github.com/zhanggyb/cjkfonts/doc/guide.pdf).
+For more information, please check the [user guide](https://github.com/zhanggyb/cjkfonts/blob/master/doc/guide.pdf).
 
 ## Sample
 
 Here's a sample page of the PDF after you use cjkfonts, it's also the first page
 of the user guide.
+
+![Sample](https://github.com/zhanggyb/cjkfonts/blob/master/doc/sample.png)
