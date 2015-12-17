@@ -12,9 +12,9 @@ Download and install a TeX document system for your platform from: http://www.tu
 - Drag the `cjkfonts.sty` and `fonts` to your project.
 - Add `\usepackage{cjkfonts}` into the preamble of your TeX source file.
 
-You can run `make` to re-comiple the user guide (generate guide.pdf in doc/).
+You can run `make` to re-comiple the user guide (generate [guide.pdf](https://github.com/zhanggyb/cjkfonts/blob/master/doc/guide.pdf) in doc/).
 
-For more information, please check the [user guide](https://github.com/zhanggyb/cjkfonts/blob/master/doc/guide.pdf).
+For more information, please check the document: [guide.pdf](https://github.com/zhanggyb/cjkfonts/blob/master/doc/guide.pdf).
 
 ## Sample
 
