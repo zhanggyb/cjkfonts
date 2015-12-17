@@ -58,9 +58,7 @@
 
 \section{简介}
 
-\href{https://github.com/zhanggyb/cjkfonts}{cjkfonts} 是一个简单的\XeLaTeX{}宏包，其中预设了一些字体配置，可用于排版包含中日韩（CJK）文字的文档。
-
-这一宏包将\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}设置为默认西文和CJK字体，包括正文、无衬线、等宽，并且默认使用细字体来获得更好的屏幕阅读体验。排版效果如下：
+\href{https://github.com/zhanggyb/cjkfonts}{cjkfonts} 是一个简单的\XeLaTeX{}宏包，可用于排版包含中日韩（CJK）文字的文档。其将\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}设置为默认西文和CJK字体，并将 \href{https://github.com/adobe-fonts/source-code-pro}{Adobe Source Code Pro} 设置为西文等宽字体用于程序代码显示。排版效果如下：
 
 \begin{center}
   Normal Text 正常文本 \\
@@ -72,17 +70,6 @@
   \textbf{\textit{BoldItalic Text 粗斜体文本}}
 \end{center}
 
-除了\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}，这一宏包还引用了其它一些出色的开源字体方案来丰富排版效果，其使用的所有字体有：
-
-\begin{itemize}
-\item {\SourceHanSansSC \href{https://github.com/adobe-fonts/source-han-sans}{Adobe思源黑体}}\footnote{简体中文字体}
-\item {\Roboto \href{https://github.com/google/roboto}{Google Roboto}}  
-\item {\RobotoCondensed \href{https://github.com/google/roboto}{Google RobotoCondensed}}
-\item {\SourceSansPro \href{https://github.com/adobe-fonts/source-sans-pro}{Adobe Source Sans Pro}}  
-\item {\SourceSerifPro \href{https://github.com/adobe-fonts/source-serif-pro}{Adobe Serif Pro}}
-\item {\SourceCodePro \href{https://github.com/adobe-fonts/source-code-pro}{Adobe Source Code Pro}}
-\end{itemize}
-
 \section{使用}
 
 \subsection{签出源码}
@@ -93,8 +80,7 @@ $ git clone https://github.com/zhanggyb/cjkfonts
 
 \subsection{准备字体文件}
 
-运行{\SourceCodePro bootstrap.sh}脚本来自动将需要的字体文件下载到
-{\SourceCodePro fonts}目录，这一脚本依赖git和curl。
+运行bootstrap.sh脚本来自动将需要的字体文件下载到fonts目录，这一脚本依赖git和curl。
 
 \begin{lstlisting}[language=sh]
 $ ./bootstrap.sh
@@ -104,17 +90,17 @@ $ ./bootstrap.sh
 
 \subsection{复制文件}
 
-直接将{\SourceCodePro cjkfonts.sty}以及{\SourceCodePro fonts}目录复制到你的文档目录。
+直接将cjkfonts.sty以及fonts目录复制到你的文档目录。
 
 \subsection{使用宏包}
 
-与其它\LaTeX{}宏包一样，引入{\SourceCodePro cjkfonts}宏包只需要在导言区使用：
+与其它\LaTeX{}宏包一样，引入cjkfonts宏包只需要在导言区使用：
 
 \begin{lstlisting}
 \usepackage{cjkfonts}
 \end{lstlisting}
 
-为了更好的屏幕阅读体验，cjkfonts 默认使用纤细\footnote{标注为Thin或者Light的字体文件，例如SourceSansPro-Light.otf}的字体，如果你需要用正常粗细的效果，可以使用选项：
+为了更好的屏幕阅读体验，cjkfonts默认使用纤细\footnote{标注为Thin或者Light的字体文件，例如SourceSansPro-Light.otf}的字体，如果你需要用正常粗细的效果，可以使用选项：
 
 \begin{lstlisting}
 \usepackage[medium]{cjkfonts}
@@ -160,7 +146,7 @@ $ ./bootstrap.sh
 
 \subsubsection{设置字体目录}
 
-使用 \verb!path=<fontdir>!来设置字体文件所在目录，默认为同级的 \verb!fonts/!。例如：
+使用 \verb!path=<fontdir>!来设置字体文件所在目录，默认为同级的fonts/。例如：
 
 \begin{lstlisting}[language=TeX]
 \usepackage[path=myfonts/]{cjkfonts}
@@ -168,7 +154,7 @@ $ ./bootstrap.sh
 
 \subsubsection{使用Medium字体}
 
-启用 \verb!medium!选项来选择Medium字体文件，这使得排版后的文字看起来更粗一些。默认使用Thin或Light字体。例如：
+启用medium选项来选择Medium字体文件，这使得排版后的文字看起来更粗一些。默认使用Thin或Light字体。例如：
 
 \begin{lstlisting}[language=TeX]
 \usepackage[medium]{cjkfonts}
@@ -183,17 +169,13 @@ $ ./bootstrap.sh
 使用同名的字体族来选择字体：
 
 \begin{itemize}
-	\item {\SourceCodePro \verb!\Roboto!}
-	\item {\SourceCodePro \verb!\RobotoCondensed!}
-	\item {\SourceCodePro \verb!\SourceSansPro!}
-	\item {\SourceCodePro \verb!\SourceSerifPro!}
-	\item {\SourceCodePro \verb!\SourceCodePro!}
-	\item {\SourceCodePro \verb!\SourceHanSansSC!}
+	\item {\verb!\SourceHanSansSC!}
+	\item {\verb!\SourceCodePro!}
 \end{itemize}
 
-例如：
-
-{\SourceCodePro \verb!{\Roboto Now use Roboto font}!} --- {\Roboto Now use Roboto font}
+%例如：
+%
+%{\SourceCodePro \verb!{\Roboto Now use Roboto font}!} --- {\Roboto Now use Roboto font}
 
 \subsection{CJK支持}
 
