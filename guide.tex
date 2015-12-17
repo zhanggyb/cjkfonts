@@ -4,7 +4,7 @@
 \documentclass[oneside,final]{article}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{ctex}
-\usepackage{cjkfonts}
+\usepackage[path=fonts/]{cjkfonts}
 \usepackage{xltxtra}	% to use \XeLeTeX
 
 % hyperlink
@@ -148,11 +148,31 @@ $ ./bootstrap.sh
 
 \section{手册}
 
-\subsection{命令}
+\subsection{选项}
+
+这一宏包只提供了2个选项：
+
+\begin{lstlisting}[language=TeX]
+\usepackage[path=<custom dir>,medium]{cjkfonts}
+\end{lstlisting}
+
+分别用于指定字体文件所在的目录，和选择字的粗细。
 
 \subsubsection{设置字体目录}
 
-使用 \verb!\setfontdir{<path>}!来设置字体文件所在目录，默认为同级的 \verb!fonts/!。
+使用 \verb!path=<fontdir>!来设置字体文件所在目录，默认为同级的 \verb!fonts/!。例如：
+
+\begin{lstlisting}[language=TeX]
+\usepackage[path=myfonts/]{cjkfonts}
+\end{lstlisting}
+
+\subsubsection{使用Medium字体}
+
+启用 \verb!medium!选项来选择Medium字体文件，这使得排版后的文字看起来更粗一些。默认使用Thin或Light字体。例如：
+
+\begin{lstlisting}[language=TeX]
+\usepackage[medium]{cjkfonts}
+\end{lstlisting}
 
 \subsection{默认字体}
 

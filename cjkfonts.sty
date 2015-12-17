@@ -28,18 +28,20 @@
   \usepackage[utf8]{inputenc}
 \fi
 
+% Set key-value options
+\RequirePackage{kvoptions}
+\DeclareStringOption[fonts/]{path}[fonts/]
 % By default, this package use thin font weight, switch this option on to use medium instead.
-\DeclareOption{medium}{\def\@medium{1}}
-
-\ProcessOptions\relax
+\DeclareBoolOption[false]{medium}
+\ProcessKeyvalOptions*
 
 
 %% New commands
 %% ============
 
 % Configure a directory location for fonts (default: 'fonts/')
-\newcommand*{\setfontdir}[1][fonts/]{\def\@fontdir{#1}}
-\setfontdir
+%\newcommand*{\setfontdir}[1][fonts/]{\def\@fontdir{#1}}
+%\setfontdir
 
 
 %% Configuration for fonts
@@ -57,142 +59,11 @@
 %   ItalicFont = *-ThinItalic,
 %   BoldItalicFont = *-Italic]
 
-\ifthenelse{\isundefined{\@medium}}{
+\ifthenelse{\boolean{cjkfonts@medium}}{
 
 	\newfontfamily\Roboto{Roboto}[
 	  Extension=.ttf,
-	  Path=\@fontdir,
-	  UprightFont=*-Thin,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-ThinItalic,
-	  BoldItalicFont=*-Italic]
-
-	\newfontfamily\RobotoCondensed{RobotoCondensed}[
-	  Extension=.ttf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Regular,
-	  ItalicFont=*-LightItalic,
-	  BoldItalicFont=*-Italic]
-
-	\newfontfamily\SourceSansPro{SourceSansPro}[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Regular,
-	  ItalicFont=*-LightIt,
-	  BoldItalicFont=*-It]
-
-	\newfontfamily\SourceSerifPro{SourceSerifPro}[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Regular,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Regular,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
-
-	\newfontfamily\SourceCodePro{SourceCodePro}[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-LightIt,
-	  BoldItalicFont=*-MediumIt]
-	
-	\newfontfamily\SourceHanSansSC{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]	
-
-	\setmainfont{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
-
-	\setCJKmainfont[Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setsansfont{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
-
-	\setCJKsansfont[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setmonofont[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setCJKmonofont[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setromanfont{SourceCodePro}[
-	   Extension = .otf,
-	   Path = \@fontdir,
-	   UprightFont = *-Light,
-	   BoldFont = *-Medium,
-	   ItalicFont = *-LightIt,
-	   BoldItalicFont = *-MediumIt]
-
-	\setCJKromanfont[
-	  Extension=.otf,
-	  Path=\@fontdir,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-}{
-
-	\newfontfamily\Roboto{Roboto}[
-	  Extension=.ttf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Italic,
@@ -200,7 +71,7 @@
 	
 	\newfontfamily\RobotoCondensed{RobotoCondensed}[
 	  Extension=.ttf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Regular,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Italic,
@@ -208,7 +79,7 @@
 
 	\newfontfamily\SourceSansPro{SourceSansPro}[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Regular,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-It,
@@ -216,7 +87,7 @@
 
 	\newfontfamily\SourceSerifPro{SourceSerifPro}[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Regular,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Regular,
@@ -226,7 +97,7 @@
 	
 	\newfontfamily\SourceCodePro{SourceCodePro}[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-MediumIt,
@@ -234,7 +105,7 @@
 
 	\newfontfamily\SourceHanSansSC{SourceHanSansSC}[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
@@ -244,7 +115,7 @@
 	
 	\setmainfont{SourceHanSansSC}[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
@@ -253,7 +124,7 @@
 	  BoldItalicFeatures=FakeSlant]
 	
 	\setCJKmainfont[Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
@@ -263,7 +134,7 @@
 	
 	\setsansfont{SourceHanSansSC}[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
@@ -273,7 +144,7 @@
 	
 	\setCJKsansfont[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
@@ -283,7 +154,7 @@
 	
 	\setmonofont[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
@@ -293,7 +164,7 @@
 	
 	\setCJKmonofont[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
@@ -302,20 +173,151 @@
 	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
 	
 	\setromanfont{SourceCodePro}[
-	   Extension = .otf,
-	   Path = \@fontdir,
-	   UprightFont = *-Medium,
-	   BoldFont = *-Bold,
-	   ItalicFont = *-MediumIt,
-	   BoldItalicFont = *-BoldIt]
+	   Extension=.otf,
+	   Path=\cjkfonts@path/,
+	   UprightFont=*-Medium,
+	   BoldFont=*-Bold,
+	   ItalicFont=*-MediumIt,
+	   BoldItalicFont=*-BoldIt]
 	
 	\setCJKromanfont[
 	  Extension=.otf,
-	  Path=\@fontdir,
+	  Path=\cjkfonts@path/,
 	  UprightFont=*-Medium,
 	  BoldFont=*-Bold,
 	  ItalicFont=*-Medium,
 	  BoldItalicFont=*-Bold,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
+
+}{
+
+	\newfontfamily\Roboto{Roboto}[
+	  Extension=.ttf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Thin,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-ThinItalic,
+	  BoldItalicFont=*-Italic]
+
+	\newfontfamily\RobotoCondensed{RobotoCondensed}[
+	  Extension=.ttf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Regular,
+	  ItalicFont=*-LightItalic,
+	  BoldItalicFont=*-Italic]
+
+	\newfontfamily\SourceSansPro{SourceSansPro}[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Regular,
+	  ItalicFont=*-LightIt,
+	  BoldItalicFont=*-It]
+
+	\newfontfamily\SourceSerifPro{SourceSerifPro}[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Regular,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Regular,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]
+
+	\newfontfamily\SourceCodePro{SourceCodePro}[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-LightIt,
+	  BoldItalicFont=*-MediumIt]
+	
+	\newfontfamily\SourceHanSansSC{SourceHanSansSC}[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]	
+
+	\setmainfont{SourceHanSansSC}[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]
+
+	\setCJKmainfont[Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
+
+	\setsansfont{SourceHanSansSC}[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]
+
+	\setCJKsansfont[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
+
+	\setmonofont[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
+
+	\setCJKmonofont[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
+	  ItalicFeatures=FakeSlant,
+	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
+
+	\setromanfont{SourceCodePro}[
+	   Extension=.otf,
+	   Path=\cjkfonts@path/,
+	   UprightFont=*-Light,
+	   BoldFont=*-Medium,
+	   ItalicFont=*-LightIt,
+	   BoldItalicFont=*-MediumIt]
+
+	\setCJKromanfont[
+	  Extension=.otf,
+	  Path=\cjkfonts@path/,
+	  UprightFont=*-Light,
+	  BoldFont=*-Medium,
+	  ItalicFont=*-Light,
+	  BoldItalicFont=*-Medium,
 	  ItalicFeatures=FakeSlant,
 	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
 
