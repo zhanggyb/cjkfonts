@@ -1,259 +1,127 @@
-%% cjkfonts.sty
-%%
-%% A XeLaTeX package for typesetting CJK documents.
-%%
-%% Author: Freeman Zhang <zhanggyb@gmail.com>
-%% Version: 0.1
-%% Homepage: https://github.com/zhanggyb/cjkfonts
+% cjkfonts.sty
+%
+% A XeLaTeX package for typesetting CJK documents.
+%
+% Author: Freeman Zhang <zhanggyb@gmail.com>
+% Version: 0.1
+% Homepage: https://github.com/zhanggyb/cjkfonts
+%
+% Options:
+%	path: The path where can find cjkfonts font files.
+%	mdseries: choose one of ExtraLight, Light, Normal, Regular, Medium, Bold, Heavy for text with medium weight.
+%	bfseries: choose one of ExtraLight, Light, Normal, Regular, Medium, Bold, Heavy for text with bold face.
+% 	default: boolean option, cjkfonts is set as the default font family and as the sans serif family for CJK text.
 
-%% Identification
-%% ==============
+% Identification
+% ==============
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{cjkfonts}[2015/12/12 Packages to set CJK fonts]
 
 
-%% Required Packages
-%% =================
+% Required Packages
+% =================
 
-\RequirePackage{ifthen}	% Use conditionals
-\RequirePackage{xeCJK}	% Needed for \setCJK*font commands
-
-\RequirePackage{ifxetex}
-\ifxetex
-  \usepackage{fontspec}
-  \defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
-\else
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\fi
+\RequirePackage{ifthen}
+\RequirePackage{xeCJK}
 
 % Set key-value options
 \RequirePackage{kvoptions}
 \DeclareStringOption[fonts/]{path}[fonts/]
-% By default, this package use thin font weight, switch this option on to use medium instead.
-\DeclareBoolOption[false]{medium}
+\DeclareStringOption[Regular]{mdseries}[Regular]
+\DeclareStringOption[Bold]{bfseries}[Bold]
+\DeclareBoolOption[false]{default}
 \ProcessKeyvalOptions*
-
-
-%% New commands
-%% ============
-
-% Configure a directory location for fonts (default: 'fonts/')
-%\newcommand*{\setfontdir}[1][fonts/]{\def\@fontdir{#1}}
-%\setfontdir
 
 
 %% Configuration for fonts
 %% =======================
 
-% By default, we use the same fonts for western and CJK fonts
-% You can modify this by yourself.
-% For example:
-%
-% \setmainfont{Roboto}[
-%   Extension = .ttf,
-%   Path = \@fontdir,
-%   UprightFont = *-Thin,
-%   BoldFont = *-Medium,
-%   ItalicFont = *-ThinItalic,
-%   BoldItalicFont = *-Italic]
+\newCJKfontfamily[SourceHanSansSC]\SourceHanSansSC[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-\cjkfonts@mdseries,
+  BoldFont=*-\cjkfonts@bfseries,
+  ItalicFont=*-\cjkfonts@mdseries,
+  BoldItalicFont=*-\cjkfonts@bfseries,
+  ItalicFeatures=FakeSlant,
+  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
 
-\ifthenelse{\boolean{cjkfonts@medium}}{
+\newCJKfontfamily[SourceHanSansSCExtraLight]\SourceHanSansSCExtraLight[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-ExtraLight,
+  AutoFakeSlant=true]{SourceHanSansSC}  
 
-	\newfontfamily\SourceCodePro{SourceCodePro}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-MediumIt,
-	  BoldItalicFont=*-BoldIt]
-	  
-	\newfontfamily\SourceHanSansSC{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
-	
-	\setmainfont{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
-	
+\newCJKfontfamily[SourceHanSansSCLight]\SourceHanSansSCLight[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-Light,
+  AutoFakeSlant=true]{SourceHanSansSC}  
+
+\newCJKfontfamily[SourceHanSansSCNormal]\SourceHanSansSCNormal[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-Normal,
+  AutoFakeSlant=true]{SourceHanSansSC}  
+
+\newCJKfontfamily[SourceHanSansSCRegular]\SourceHanSansSCRegular[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-Regular,
+  AutoFakeSlant=true]{SourceHanSansSC}  
+
+\newCJKfontfamily[SourceHanSansSCMedium]\SourceHanSansSCMedium[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-Medium,
+  AutoFakeSlant=true]{SourceHanSansSC}  
+
+\newCJKfontfamily[SourceHanSansSCBold]\SourceHanSansSCBold[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-Bold,
+  AutoFakeSlant=true]{SourceHanSansSC}  
+
+\newCJKfontfamily[SourceHanSansSCHeavy]\SourceHanSansSCHeavy[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=*-Heavy,
+  AutoFakeSlant=true]{SourceHanSansSC}  
+
+
+\ifthenelse{\boolean{cjkfonts@default}}{
+
 	\setCJKmainfont[Extension=.otf,
 	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
+	  UprightFont=*-\cjkfonts@mdseries,
+	  BoldFont=*-\cjkfonts@bfseries,
+	  ItalicFont=*-\cjkfonts@mdseries,
+	  BoldItalicFont=*-\cjkfonts@bfseries,
 	  ItalicFeatures=FakeSlant,
 	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-	
-	\setsansfont{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
 	
 	\setCJKsansfont[
 	  Extension=.otf,
 	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-	
-	\setmonofont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
+	  UprightFont=*-\cjkfonts@mdseries,
+	  BoldFont=*-\cjkfonts@bfseries,
+	  ItalicFont=*-\cjkfonts@mdseries,
+	  BoldItalicFont=*-\cjkfonts@bfseries,
 	  ItalicFeatures=FakeSlant,
 	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
 	
 	\setCJKmonofont[
 	  Extension=.otf,
 	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-	
-	\setromanfont{SourceCodePro}[
-	   Extension=.otf,
-	   Path=\cjkfonts@path/,
-	   UprightFont=*-Medium,
-	   BoldFont=*-Bold,
-	   ItalicFont=*-MediumIt,
-	   BoldItalicFont=*-BoldIt]
-	
-	\setCJKromanfont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Medium,
-	  BoldFont=*-Bold,
-	  ItalicFont=*-Medium,
-	  BoldItalicFont=*-Bold,
+	  UprightFont=*-\cjkfonts@mdseries,
+	  BoldFont=*-\cjkfonts@bfseries,
+	  ItalicFont=*-\cjkfonts@mdseries,
+	  BoldItalicFont=*-\cjkfonts@bfseries,
 	  ItalicFeatures=FakeSlant,
 	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
 
-}{
-	
-	\newfontfamily\SourceCodePro{SourceCodePro}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-LightIt,
-	  BoldItalicFont=*-MediumIt]
-	  
-	\newfontfamily\SourceHanSansSC{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]	
-
-	\setmainfont{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
-
-	\setCJKmainfont[Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setsansfont{SourceHanSansSC}[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]
-
-	\setCJKsansfont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setmonofont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setCJKmonofont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-	\setromanfont{SourceCodePro}[
-	   Extension=.otf,
-	   Path=\cjkfonts@path/,
-	   UprightFont=*-Light,
-	   BoldFont=*-Semibold,
-	   ItalicFont=*-LightIt,
-	   BoldItalicFont=*-SemiboldIt]
-
-	\setCJKromanfont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-Light,
-	  BoldFont=*-Medium,
-	  ItalicFont=*-Light,
-	  BoldItalicFont=*-Medium,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
-}
+}{}
 
 
 %% This must be the last command
