@@ -167,7 +167,7 @@ $ git clone https://github.com/zhanggyb/cjkfonts
 
 \subsection{准备字体文件}
 
-运行bootstrap.sh脚本来自动将需要的字体文件下载到fonts目录，这一脚本依赖git和curl。
+运行bootstrap.sh脚本来自动将需要的字体文件下载到fonts目录，这一脚本依赖curl。
 
 \begin{lstlisting}[language=sh]
 $ ./bootstrap.sh
@@ -278,7 +278,7 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 
 \subsection{CJK支持}
 
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}已经支持CJK文本。
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}已经支持其它繁体中文、韩文和日文字体。
 
 例如：
 
@@ -297,55 +297,9 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 	\item bootstrap.sh 脚本只在OS X和Linux系统上测试过。
 \end{enumerate}
 
-\section{中文排版建议}
+\section{与Google Roboto字体混合使用}
 
-将\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}与其它英文字体配合使用可以得到很好的排版效果，推荐Adobe开源字体或Google Roboto字体。
-这些字体已经随着TeX Live 2015版本发布，安装后在TEXDIR目录可以找到字体文件。
-
-\subsection{与Adobe字体族配合使用}
-
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}与Adobe Source Sans Pro英文字体配合：
-
-\begin{center}
-	{\SourceSansProExtraLight Source Sans Pro Extra Light}{\SourceHanSansSCExtraLight 与思源黑体}{\SourceSansProExtraLight Extra Light}{\SourceHanSansSCExtraLight 混排效果示例}\\
-	{\SourceSansProLight Source Sans Pro Light}{\SourceHanSansSCLight 与思源黑体}{\SourceSansProLight Light}{\SourceHanSansSCLight 混排效果示例}\\
-	{\SourceSansProRegular Source Sans Pro Regular}{\SourceHanSansSCRegular 与思源黑体}{\SourceSansProRegular Regular}{\SourceHanSansSCRegular 混排效果示例}\\
-	{\SourceSansProSemibold Source Sans Pro Semibold}{\SourceHanSansSCMedium 与思源黑体}{\SourceSansProSemibold Medium}{\SourceHanSansSCMedium 混排效果示例}\\
-	{\SourceSansProBold Source Sans Pro Bold}{\SourceHanSansSCBold 与思源黑体}{\SourceSansProBold Bold}{\SourceHanSansSCBold 混排效果示例}\\
-	{\SourceSansProBlack Source Sans Pro Black}{\SourceHanSansSCHeavy 与思源黑体}{\SourceSansProBlack Heavy}{\SourceHanSansSCHeavy 混排效果示例}
-\end{center}
-
-%\begin{lstlisting}[language=TeX]
-%\setmainfont{SourceSansPro}[
-%  Extension=.otf,
-%  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-%  UprightFont=*-Light,
-%  BoldFont=*-Semibold,
-%  ItalicFont=*-LightIt,
-%  BoldItalicFont=*-SemiboldIt]
-%
-%\setsansfont{SourceSerifPro}[
-%  Extension=.otf,
-%  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourceserifpro/,
-%  UprightFont=*-Light,
-%  BoldFont=*-Semibold,
-%  ItalicFont=*-Light,
-%  BoldItalicFont=*-Semibold,
-%  ItalicFeatures=FakeSlant,
-%  BoldItalicFeatures=FakeSlant]
-%
-%\setmonofont{SourceCodePro}[
-%  Extension=.otf,
-%  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcecodepro/,
-%  UprightFont=*-Light,
-%  BoldFont=*-Semibold,
-%  ItalicFont=*-LightIt,
-%  BoldItalicFont=*-SemiboldIt]
-%\end{lstlisting}
-
-\subsection{与Google Roboto英文字体配合}
-
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}与Google Roboto英文字体配合：
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}与Google Roboto英文字体配合使用非常和谐：
 
 \begin{center}
 	{\RobotoThin Roboto Thin}{\SourceHanSansSCExtraLight 与思源黑体}{\RobotoThin Extra Light}{\SourceHanSansSCExtraLight 混排效果示例}\\
@@ -353,7 +307,7 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 	{\RobotoRegular Roboto Regular}{\SourceHanSansSCRegular 与思源黑体}{\RobotoRegular Regular}{\SourceHanSansSCRegular 混排效果示例}\\
 	{\RobotoMedium Roboto Medium}{\SourceHanSansSCMedium 与思源黑体}{\RobotoMedium Medium}{\SourceHanSansSCMedium 混排效果示例}\\
 	{\RobotoBold Roboto Bold}{\SourceHanSansSCBold 与思源黑体}{\RobotoBold Bold}{\SourceHanSansSCBold 混排效果示例}\\
-	{\RobotoBlack Roboto Black}{\SourceHanSansSCHeavy 与思源黑体}{\RobotoBlack Black}{\SourceHanSansSCHeavy 混排效果示例}
+	{\RobotoBlack Roboto Black}{\SourceHanSansSCHeavy 与思源黑体}{\RobotoBlack Heavy}{\SourceHanSansSCHeavy 混排效果示例}
 \end{center}
 
 %\begin{lstlisting}[language=TeX]
