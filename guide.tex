@@ -4,98 +4,16 @@
 \documentclass[oneside,final]{article}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{ctex}
-\usepackage{xltxtra}	% to use \XeLeTeX
-
-% font setting
-\usepackage[default,mdseries=Light,bfseries=Medium]{cjkfonts}
-
-\newfontfamily\RobotoThin{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Thin]
-
-\newfontfamily\RobotoLight{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Light]
-
-\newfontfamily\RobotoRegular{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Regular]
-
-\newfontfamily\RobotoMedium{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Medium]
-
-\newfontfamily\RobotoBold{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Bold]
-
-\newfontfamily\RobotoBlack{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Black]
-
-\newfontfamily\SourceSansProExtraLight{SourceSansPro}[
-  Extension=.otf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-  UprightFont=*-ExtraLight]
-
-\newfontfamily\SourceSansProLight{SourceSansPro}[
-  Extension=.otf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-  UprightFont=*-Light]
-
-\newfontfamily\SourceSansProRegular{SourceSansPro}[
-  Extension=.otf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-  UprightFont=*-Regular]
-
-\newfontfamily\SourceSansProBold{SourceSansPro}[
-  Extension=.otf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-  UprightFont=*-Bold]
-
-\newfontfamily\SourceSansProSemibold{SourceSansPro}[
-  Extension=.otf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-  UprightFont=*-Semibold]
-
-\newfontfamily\SourceSansProBlack{SourceSansPro}[
-  Extension=.otf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-  UprightFont=*-Black]
-
-
-\setmainfont{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Light,
-  BoldFont=*-Medium,
-  ItalicFont=*-LightItalic,
-  BoldItalicFont=*-MediumItalic]
-
-\setsansfont{Roboto}[
-  Extension=.ttf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-  UprightFont=*-Light,
-  BoldFont=*-Medium,
-  ItalicFont=*-LightItalic,
-  BoldItalicFont=*-MediumItalic]
-
-\setmonofont{SourceCodePro}[
-  Extension=.otf,
-  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcecodepro/,
-  UprightFont=*-Light,
-  BoldFont=*-Semibold,
-  ItalicFont=*-LightIt,
-  BoldItalicFont=*-SemiboldIt]
+\usepackage{xltxtra}            % to use \XeLeTeX
 
 % hyperlink
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
+% load cjkfonts and set Source Han Sans SC as the default CJK fonts:
+\usepackage[default,mdseries=Light,bfseries=Medium]{cjkfonts}
+% Set Roboto and Source Code Pro, which are installed with TexLive,
+% for western fonts:
+\input{localfonts.tex}
 
 % for code example
 \usepackage{listings}
@@ -145,7 +63,10 @@
 
 \section{简介}
 
-\href{https://github.com/zhanggyb/cjkfonts}{cjkfonts} 是一个简单的\XeLaTeX{}宏包，可用于排版包含中日韩（CJK）文字的文档。其将\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}设置为默认CJK字体，排版效果如下：
+\href{https://github.com/zhanggyb/cjkfonts}{cjkfonts} 是一个简单的
+\XeLaTeX{}宏包，可用于排版包含中日韩（CJK）文字的文档。其将
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}设置为
+默认CJK字体，排版效果如下：
 
 \begin{center}
   Normal Text {\SourceHanSansSC 正常文本} \\
@@ -167,7 +88,8 @@ $ git clone https://github.com/zhanggyb/cjkfonts
 
 \subsection{准备字体文件}
 
-运行bootstrap.sh脚本来自动将需要的字体文件下载到fonts目录，这一脚本依赖curl。
+运行bootstrap.sh脚本来自动将需要的字体文件下载到fonts目录，这一脚本依
+赖curl。
 
 \begin{lstlisting}[language=sh]
 $ ./bootstrap.sh
@@ -193,7 +115,8 @@ $ ./bootstrap.sh
 \usepackage[path=<mypath>]{cjkfonts}
 \end{lstlisting}
 
-使用default选项在加载宏包时设置CJK字体设置为\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}：
+使用default选项在加载宏包时设置CJK字体设置为
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}：
 
 \begin{lstlisting}[language=TeX]
 \usepackage[default]{cjkfonts}
@@ -238,11 +161,11 @@ $ ./bootstrap.sh
 
 \begin{center}
 \begin{tabular}{ c l }
-	\textbf{path=<font dir>} & 设置\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}字体文件路径为<font dir>指定的路径 \\
-	\textbf{default} & 设置默认CJK字体为\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体} \\
-	\textbf{mdseries=<weight>} & 设置常规字体字重，<weight>只能从以下表格选择一个 \\
-	\textbf{bfseries=<weight>} & 设置粗字体字重，<weight>只能从以下表格选择一个 \\
-\end{tabular}	
+  \textbf{path=<font dir>} & 设置\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}字体文件路径为<font dir>指定的路径 \\
+  \textbf{default} & 设置默认CJK字体为\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体} \\
+  \textbf{mdseries=<weight>} & 设置常规字体字重，<weight>只能从以下表格选择一个 \\
+  \textbf{bfseries=<weight>} & 设置粗字体字重，<weight>只能从以下表格选择一个 \\
+\end{tabular}
 \end{center}
 
 \begin{center}
@@ -258,7 +181,7 @@ Medium     & {\SourceHanSansSCMedium 朝辞白帝彩云间，千里江陵一日�
 Bold       & {\SourceHanSansSCBold 朝辞白帝彩云间，千里江陵一日还。} \\
 Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日还。} \\
 \hline
-\end{tabular}	
+\end{tabular}
 \end{center}
 
 \subsection{字体族}
@@ -278,7 +201,8 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 
 \subsection{CJK支持}
 
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}已经支持其它繁体中文、韩文和日文字体。
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}已经支
+持其它繁体中文、韩文和日文字体。
 
 例如：
 
@@ -287,27 +211,28 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
     \textbf{简体中文} & 每个人生来平等，享有相同的地位和权利。 \\
     \textbf{繁體中文} & 每個人生來平等，享有相同的地位和權利。 \\
     \textbf{한국의} & 모두가 동일한 태어나 같은 지위와 권리 를 가지고 있다。\\
-	\textbf{日本語} & すべての人間は自由であり、かつ、尊厳と権利とについて平等である。\\
+    \textbf{日本語} & すべての人間は自由であり、かつ、尊厳と権利とについて平等である。\\
   \end{tabular}
 \end{center}
 
 \section{已知问题}
 
 \begin{enumerate}
-	\item bootstrap.sh 脚本只在OS X和Linux系统上测试过。
+\item bootstrap.sh 脚本只在OS X和Linux系统上测试过。
 \end{enumerate}
 
 \section{与Google Roboto字体混合使用}
 
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}与Google Roboto英文字体配合使用非常和谐：
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}与
+Google Roboto英文字体配合使用非常和谐：
 
 \begin{center}
-	{\RobotoThin Roboto Thin}{\SourceHanSansSCExtraLight 与思源黑体}{\RobotoThin Extra Light}{\SourceHanSansSCExtraLight 混排效果示例}\\
-	{\RobotoLight Roboto Light}{\SourceHanSansSCLight 与思源黑体}{\RobotoLight Light}{\SourceHanSansSCLight 混排效果示例}\\
-	{\RobotoRegular Roboto Regular}{\SourceHanSansSCRegular 与思源黑体}{\RobotoRegular Regular}{\SourceHanSansSCRegular 混排效果示例}\\
-	{\RobotoMedium Roboto Medium}{\SourceHanSansSCMedium 与思源黑体}{\RobotoMedium Medium}{\SourceHanSansSCMedium 混排效果示例}\\
-	{\RobotoBold Roboto Bold}{\SourceHanSansSCBold 与思源黑体}{\RobotoBold Bold}{\SourceHanSansSCBold 混排效果示例}\\
-	{\RobotoBlack Roboto Black}{\SourceHanSansSCHeavy 与思源黑体}{\RobotoBlack Heavy}{\SourceHanSansSCHeavy 混排效果示例}
+  {\RobotoThin Roboto Thin}{\SourceHanSansSCExtraLight 与思源黑体}{\RobotoThin Extra Light}{\SourceHanSansSCExtraLight 混排效果示例}\\
+  {\RobotoLight Roboto Light}{\SourceHanSansSCLight 与思源黑体}{\RobotoLight Light}{\SourceHanSansSCLight 混排效果示例}\\
+  {\RobotoRegular Roboto Regular}{\SourceHanSansSCRegular 与思源黑体}{\RobotoRegular Regular}{\SourceHanSansSCRegular 混排效果示例}\\
+  {\RobotoMedium Roboto Medium}{\SourceHanSansSCMedium 与思源黑体}{\RobotoMedium Medium}{\SourceHanSansSCMedium 混排效果示例}\\
+  {\RobotoBold Roboto Bold}{\SourceHanSansSCBold 与思源黑体}{\RobotoBold Bold}{\SourceHanSansSCBold 混排效果示例}\\
+  {\RobotoBlack Roboto Black}{\SourceHanSansSCHeavy 与思源黑体}{\RobotoBlack Heavy}{\SourceHanSansSCHeavy 混排效果示例}
 \end{center}
 
 %\begin{lstlisting}[language=TeX]
@@ -338,7 +263,8 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 
 \section{代码实现}
 
-cjkfonts的程序代码非常简单，只是利用\href{https://github.com/ctex-org/ctex-kit}{xeCJK}宏包设置排版字体：
+cjkfonts的程序代码非常简单，只是利用
+\href{https://github.com/ctex-org/ctex-kit}{xeCJK}宏包设置排版字体：
 
 \lstinputlisting[language=TeX]{cjkfonts.sty}
 

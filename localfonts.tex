@@ -1,0 +1,59 @@
+% localfonts.tex
+
+\newcommand{\fontdir}[0]{/usr/local/texlive/2015/texmf-dist/fonts/}
+\newcommand{\robotodir}[0]{\fontdir/truetype/google/roboto/}
+\newcommand{\sourcecodeprodir}[0]{\fontdir/opentype/adobe/sourcecodepro/}
+
+\newfontfamily\RobotoThin{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Thin]
+
+\newfontfamily\RobotoLight{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Light]
+
+\newfontfamily\RobotoRegular{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Regular]
+
+\newfontfamily\RobotoMedium{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Medium]
+
+\newfontfamily\RobotoBold{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Bold]
+
+\newfontfamily\RobotoBlack{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Black]
+
+\setmainfont{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Light,
+  BoldFont=*-Medium,
+  ItalicFont=*-LightItalic,
+  BoldItalicFont=*-MediumItalic]
+
+\setsansfont{Roboto}[
+  Extension=.ttf,
+  Path=\robotodir,
+  UprightFont=*-Light,
+  BoldFont=*-Medium,
+  ItalicFont=*-LightItalic,
+  BoldItalicFont=*-MediumItalic]
+
+\setmonofont{SourceCodePro}[
+  Extension=.otf,
+  Path=\sourcecodeprodir,
+  UprightFont=*-Light,
+  BoldFont=*-Semibold,
+  ItalicFont=*-LightIt,
+  BoldItalicFont=*-SemiboldIt]
