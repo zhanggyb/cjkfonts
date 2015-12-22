@@ -14,6 +14,12 @@
 % Set Roboto and Source Code Pro, which are installed with TexLive,
 % for western fonts:
 \input{localfonts.tex}
+\newcommand{\mixthin}[0]{\RobotoThin\SourceHanSansSCExtraLight}
+\newcommand{\mixlight}[0]{\RobotoLight\SourceHanSansSCLight}
+\newcommand{\mixregular}[0]{\RobotoRegular\SourceHanSansSCRegular}
+\newcommand{\mixmedium}[0]{\RobotoMedium\SourceHanSansSCMedium}
+\newcommand{\mixbold}[0]{\RobotoBold\SourceHanSansSCBold}
+\newcommand{\mixblack}[0]{\RobotoBlack\SourceHanSansSCHeavy}
 
 % for code example
 \usepackage{listings}
@@ -83,7 +89,7 @@
 \subsection{签出源码}
 
 \begin{lstlisting}[language=sh]
-$ git clone https://github.com/zhanggyb/cjkfonts
+  $ git clone https://github.com/zhanggyb/cjkfonts
 \end{lstlisting}
 
 \subsection{准备字体文件}
@@ -227,12 +233,12 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 Google Roboto英文字体配合使用非常和谐：
 
 \begin{center}
-  {\RobotoThin Roboto Thin}{\SourceHanSansSCExtraLight 与思源黑体}{\RobotoThin Extra Light}{\SourceHanSansSCExtraLight 混排效果示例}\\
-  {\RobotoLight Roboto Light}{\SourceHanSansSCLight 与思源黑体}{\RobotoLight Light}{\SourceHanSansSCLight 混排效果示例}\\
-  {\RobotoRegular Roboto Regular}{\SourceHanSansSCRegular 与思源黑体}{\RobotoRegular Regular}{\SourceHanSansSCRegular 混排效果示例}\\
-  {\RobotoMedium Roboto Medium}{\SourceHanSansSCMedium 与思源黑体}{\RobotoMedium Medium}{\SourceHanSansSCMedium 混排效果示例}\\
-  {\RobotoBold Roboto Bold}{\SourceHanSansSCBold 与思源黑体}{\RobotoBold Bold}{\SourceHanSansSCBold 混排效果示例}\\
-  {\RobotoBlack Roboto Black}{\SourceHanSansSCHeavy 与思源黑体}{\RobotoBlack Heavy}{\SourceHanSansSCHeavy 混排效果示例}
+  {\mixthin Roboto Thin与思源黑体Extra Light混排效果示例}\\
+  {\mixlight Roboto Light与思源黑体Light混排效果示例}\\
+  {\mixregular Roboto Regular与思源黑体Regular混排效果示例}\\
+  {\mixmedium Roboto Medium与思源黑体Medium混排效果示例}\\
+  {\mixbold Roboto Bold与思源黑体Bold混排效果示例}\\
+  {\mixblack Roboto Black与思源黑体Heavy混排效果示例}
 \end{center}
 
 %\begin{lstlisting}[language=TeX]
