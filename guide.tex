@@ -10,20 +10,24 @@
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
 % load cjkfonts and set Source Han Sans SC as the default CJK fonts:
-\usepackage[default,mdseries=Light,bfseries=Medium]{cjkfonts}
+%\usepackage[default,mdseries=Light,bfseries=Medium]{cjkfonts}
+\usepackage[default]{cjkfonts}
 % Set Roboto and Source Code Pro, which are installed with TexLive,
 % for western fonts:
 \input{localfonts.tex}
-\newcommand{\mixthin}[0]{\RobotoThin\SourceHanSansSCExtraLight}
-\newcommand{\mixlight}[0]{\RobotoLight\SourceHanSansSCLight}
-\newcommand{\mixregular}[0]{\RobotoRegular\SourceHanSansSCRegular}
-\newcommand{\mixmedium}[0]{\RobotoMedium\SourceHanSansSCMedium}
-\newcommand{\mixbold}[0]{\RobotoBold\SourceHanSansSCBold}
-\newcommand{\mixblack}[0]{\RobotoBlack\SourceHanSansSCHeavy}
+\newcommand{\mixthin}[0]{\RobotoThin\NotoSansSCThin}
+\newcommand{\mixlight}[0]{\RobotoLight\NotoSansSCLight}
+\newcommand{\mixregular}[0]{\RobotoRegular\NotoSansSCRegular}
+\newcommand{\mixmedium}[0]{\RobotoMedium\NotoSansSCMedium}
+\newcommand{\mixbold}[0]{\RobotoBold\NotoSansSCBold}
+\newcommand{\mixblack}[0]{\RobotoBlack\NotoSansSCBlack}
 
 % for code example
 \usepackage{listings}
 \usepackage{color}
+
+% for better table
+\usepackage{booktabs}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -69,19 +73,20 @@
 
 \section{简介}
 
-\href{https://github.com/zhanggyb/cjkfonts}{cjkfonts} 是一个简单的
-\XeLaTeX{}宏包，可用于排版包含中日韩（CJK）文字的文档。其将%
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}设置为
-默认CJK字体，排版效果如下：
+\href{https://github.com/zhanggyb/cjkfonts}{cjkfonts} 是一个简单的\XeLaTeX{}宏包，
+可用于排版包含中日韩（CJK）文字的文档。其将
+\href{https://www.google.com/get/noto/#sans-hans}{Google Noto Sans CJK SC}，即
+\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}，设置为默认CJK字
+体，排版效果如下：
 
 \begin{center}
-  Normal Text {\SourceHanSansSC 正常文本} \\
+  Normal Text {\NotoSansSC 正常文本} \\
   \vspace{1em}
-  \textbf{Bold Text {\SourceHanSansSC 粗体文本}} \\
+  \textbf{Bold Text {\NotoSansSC 粗体文本}} \\
   \vspace{1em}
-  \textit{Italic Text {\SourceHanSansSC 斜体文本}} \\
+  \textit{Italic Text {\NotoSansSC 斜体文本}} \\
   \vspace{1em}
-  \textbf{\textit{BoldItalic Text {\SourceHanSansSC 粗斜体文本}}}
+  \textbf{\textit{BoldItalic Text {\NotoSansSC 粗斜体文本}}}
 \end{center}
 
 \section{使用}
@@ -94,11 +99,10 @@
 
 \subsection{准备字体文件}
 
-运行bootstrap.sh脚本来自动将需要的字体文件下载到fonts目录，这一脚本依
-赖curl。
+运行bootstrap.sh脚本来自动将需要的字体文件下载到fonts目录，这一脚本依赖curl。
 
 \begin{lstlisting}[language=sh]
-$ ./bootstrap.sh
+  $ ./bootstrap.sh
 \end{lstlisting}
 
 也可以自行下载并放在 fonts 目录。
@@ -121,15 +125,22 @@ $ ./bootstrap.sh
 \usepackage[path=<mypath>]{cjkfonts}
 \end{lstlisting}
 
-使用default选项在加载宏包时设置CJK字体设置为%
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}：
+使用default选项：
 
 \begin{lstlisting}[language=TeX]
 \usepackage[default]{cjkfonts}
 \end{lstlisting}
 
+在加载宏包时设置其为默认的CJK字体：
 
-为了更好的屏幕阅读体验，建议将mdseries和bfseries设置为较细的字体：
+\begin{itemize}
+\item 设置CJKmainfont为NotoSans
+\item 设置CJKsansfont为NotoSans
+\item 设置CJKmonofont为NotoSansMono
+\end{itemize}
+
+使用mdseries和bfseries选项可以为常规体和粗体选择不同的字重，例如，以下选项可以让
+文字显得更纤细一些：
 
 \begin{lstlisting}
 \usepackage[mdseries=Light,bfseries=Medium]{cjkfonts}
@@ -167,26 +178,26 @@ $ ./bootstrap.sh
 
 \begin{center}
 \begin{tabular}{ c l }
-  \textbf{path=<font dir>} & 设置\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}字体文件路径为<font dir>指定的路径 \\
-  \textbf{default} & 设置默认CJK字体为\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体} \\
-  \textbf{mdseries=<weight>} & 设置常规字体字重，<weight>只能从以下表格选择一个 \\
-  \textbf{bfseries=<weight>} & 设置粗字体字重，<weight>只能从以下表格选择一个 \\
+  \textbf{path=<font dir>}   & 设置Noto Sans CJK SC字体文件路径为<font dir>指定的路径              \\
+  \textbf{default}           & 设置默认CJK字体为NotoSansSC                                       \\
+  \textbf{mdseries=<weight>} & 设置常规字体字重，<weight>只能从以下表格选择一个，默认为\emph{Regular} \\
+  \textbf{bfseries=<weight>} & 设置粗字体字重，<weight>只能从以下表格选择一个，默认为\emph{Bold}      \\
 \end{tabular}
 \end{center}
 
 \begin{center}
-\begin{tabular}{ | c | c | }
-\hline
+\begin{tabular}{ c c }
+\toprule
 weight 可取值 & 样例 \\
-\hline
-ExtraLight & {\SourceHanSansSCExtraLight 朝辞白帝彩云间，千里江陵一日还。} \\
-Light      & {\SourceHanSansSCLight 朝辞白帝彩云间，千里江陵一日还。} \\
-Normal     & {\SourceHanSansSCNormal 朝辞白帝彩云间，千里江陵一日还。} \\
-Regular    & {\SourceHanSansSCRegular 朝辞白帝彩云间，千里江陵一日还。} \\
-Medium     & {\SourceHanSansSCMedium 朝辞白帝彩云间，千里江陵一日还。} \\
-Bold       & {\SourceHanSansSCBold 朝辞白帝彩云间，千里江陵一日还。} \\
-Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日还。} \\
-\hline
+\midrule
+Thin      & {\NotoSansSCThin 朝辞白帝彩云间，千里江陵一日还。}      \\
+Light     & {\NotoSansSCLight 朝辞白帝彩云间，千里江陵一日还。}     \\
+DemiLight & {\NotoSansSCDemiLight 朝辞白帝彩云间，千里江陵一日还。} \\
+Regular   & {\NotoSansSCRegular 朝辞白帝彩云间，千里江陵一日还。}   \\
+Medium    & {\NotoSansSCMedium 朝辞白帝彩云间，千里江陵一日还。}    \\
+Bold      & {\NotoSansSCBold 朝辞白帝彩云间，千里江陵一日还。}      \\
+Black     & {\NotoSansSCBlack 朝辞白帝彩云间，千里江陵一日还。}     \\
+\bottomrule
 \end{tabular}
 \end{center}
 
@@ -195,20 +206,22 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 使用同名的字体族来选择字体：
 
 \begin{itemize}
-\item {\verb!\SourceHanSansSC!}
-\item {\verb!\SourceHanSansSCExtraLight!}
-\item {\verb!\SourceHanSansSCLight!}
-\item {\verb!\SourceHanSansSCNormal!}
-\item {\verb!\SourceHanSansSCRegular!}
-\item {\verb!\SourceHanSansSCMedium!}
-\item {\verb!\SourceHanSansSCBold!}
-\item {\verb!\SourceHanSansSCHeavy!}
+\item {\verb!\NotoSansSC!}
+\item {\verb!\NotoSansSCThin!}
+\item {\verb!\NotoSansSCLight!}
+\item {\verb!\NotoSansSCSemiLight!}
+\item {\verb!\NotoSansSCRegular!}
+\item {\verb!\NotoSansSCMedium!}
+\item {\verb!\NotoSansSCBold!}
+\item {\verb!\NotoSansSCBlack!}
+\item {\verb!\NotoSansMonoSC!}
+\item {\verb!\NotoSansMonoSCRegular!}
+\item {\verb!\NotoSansMonoSCBold!}
 \end{itemize}
 
 \subsection{CJK支持}
 
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}已经支
-持其它繁体中文、韩文和日文字体。
+Noto Sans CJK SC已经支持其它繁体中文、韩文和日文字体。
 
 例如：
 
@@ -229,7 +242,7 @@ Heavy      & {\SourceHanSansSCHeavy 朝辞白帝彩云间，千里江陵一日�
 
 \section{与Google Roboto字体混合使用}
 
-\href{https://github.com/adobe-fonts/source-han-sans}{思源黑体}与
+Noto Sans CJK与
 Google Roboto英文字体配合使用非常和谐：
 
 \begin{center}
@@ -240,32 +253,6 @@ Google Roboto英文字体配合使用非常和谐：
   {\mixbold Roboto Bold与思源黑体Bold混排效果示例}\\
   {\mixblack Roboto Black与思源黑体Heavy混排效果示例}
 \end{center}
-
-%\begin{lstlisting}[language=TeX]
-%\setmainfont{Roboto}[
-%  Extension=.ttf,
-%  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-%  UprightFont=*-Light,
-%  BoldFont=*-Medium,
-%  ItalicFont=*-LightItalic,
-%  BoldItalicFont=*-MediumItalic]
-%
-%\setsansfont{Roboto}[
-%  Extension=.ttf,
-%  Path=/usr/local/texlive/2015/texmf-dist/fonts/truetype/google/roboto/,
-%  UprightFont=*-Light,
-%  BoldFont=*-Medium,
-%  ItalicFont=*-LightItalic,
-%  BoldItalicFont=*-MediumItalic]
-%
-%\setmonofont{SourceCodePro}[
-%  Extension=.otf,
-%  Path=/usr/local/texlive/2015/texmf-dist/fonts/opentype/adobe/sourcecodepro/,
-%  UprightFont=*-Light,
-%  BoldFont=*-Semibold,
-%  ItalicFont=*-LightIt,
-%  BoldItalicFont=*-SemiboldIt]
-%\end{lstlisting}
 
 \section{代码实现}
 

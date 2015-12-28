@@ -8,8 +8,8 @@
 %
 % Options:
 %	path: The path where can find cjkfonts font files.
-%	mdseries: choose one of ExtraLight, Light, Normal, Regular, Medium, Bold, Heavy for text with medium weight.
-%	bfseries: choose one of ExtraLight, Light, Normal, Regular, Medium, Bold, Heavy for text with bold face.
+%	mdseries: choose one of Thin, Light, DemiLight, Regular, Medium, Bold, Black for text with medium weight.
+%	bfseries: choose one of Thin, Light, DemiLight, Regular, Medium, Bold, Black for text with bold face.
 % 	default: boolean option, cjkfonts is set as the default font family and as the sans serif family for CJK text.
 
 % Identification
@@ -37,90 +37,111 @@
 %% Configuration for fonts
 %% =======================
 
-\newCJKfontfamily[SourceHanSansSC]\SourceHanSansSC[
+\newCJKfontfamily[NotoSansSC]\NotoSansSC[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-\cjkfonts@mdseries,
-  BoldFont=*-\cjkfonts@bfseries,
-  ItalicFont=*-\cjkfonts@mdseries,
-  BoldItalicFont=*-\cjkfonts@bfseries,
+  UprightFont=NotoSansCJKsc-\cjkfonts@mdseries,
+  BoldFont=NotoSansCJKsc-\cjkfonts@bfseries,
+  ItalicFont=NotoSansCJKsc-\cjkfonts@mdseries,
+  BoldItalicFont=NotoSansCJKsc-\cjkfonts@bfseries,
   ItalicFeatures=FakeSlant,
-  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
+  BoldItalicFeatures=FakeSlant]{NotoSansSC}
 
-\newCJKfontfamily[SourceHanSansSCExtraLight]\SourceHanSansSCExtraLight[
+\newCJKfontfamily[NotoSansMonoSC]\NotoSansMonoSC[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-ExtraLight,
-  AutoFakeSlant=true]{SourceHanSansSC}  
+  UprightFont=NotoSansMonoCJKsc-Regular,
+  BoldFont=NotoSansMonoCJKsc-Bold,
+  ItalicFont=NotoSansMonoCJKsc-Regular,
+  BoldItalicFont=NotoSansMonoCJKsc-Bold,
+  ItalicFeatures=FakeSlant,
+  BoldItalicFeatures=FakeSlant]{NotoSansMonoSC}
 
-\newCJKfontfamily[SourceHanSansSCLight]\SourceHanSansSCLight[
+\newCJKfontfamily[NotoSansSCThin]\NotoSansSCThin[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-Light,
-  AutoFakeSlant=true]{SourceHanSansSC}  
+  UprightFont=NotoSansCJKsc-Thin,
+  AutoFakeSlant=true]{NotoSansSC}  
 
-\newCJKfontfamily[SourceHanSansSCNormal]\SourceHanSansSCNormal[
+\newCJKfontfamily[NotoSansSCLight]\NotoSansSCLight[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-Normal,
-  AutoFakeSlant=true]{SourceHanSansSC}  
+  UprightFont=NotoSansCJKsc-Light,
+  AutoFakeSlant=true]{NotoSansSC}  
 
-\newCJKfontfamily[SourceHanSansSCRegular]\SourceHanSansSCRegular[
+\newCJKfontfamily[NotoSansSCDemiLight]\NotoSansSCDemiLight[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-Regular,
-  AutoFakeSlant=true]{SourceHanSansSC}  
+  UprightFont=NotoSansCJKsc-DemiLight,
+  AutoFakeSlant=true]{NotoSansSC}  
 
-\newCJKfontfamily[SourceHanSansSCMedium]\SourceHanSansSCMedium[
+\newCJKfontfamily[NotoSansSCRegular]\NotoSansSCRegular[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-Medium,
-  AutoFakeSlant=true]{SourceHanSansSC}  
+  UprightFont=NotoSansCJKsc-Regular,
+  AutoFakeSlant=true]{NotoSansSC}  
 
-\newCJKfontfamily[SourceHanSansSCBold]\SourceHanSansSCBold[
+\newCJKfontfamily[NotoSansSCMedium]\NotoSansSCMedium[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-Bold,
-  AutoFakeSlant=true]{SourceHanSansSC}  
+  UprightFont=NotoSansCJKsc-Medium,
+  AutoFakeSlant=true]{NotoSansSC}  
 
-\newCJKfontfamily[SourceHanSansSCHeavy]\SourceHanSansSCHeavy[
+\newCJKfontfamily[NotoSansSCBold]\NotoSansSCBold[
   Extension=.otf,
   Path=\cjkfonts@path/,
-  UprightFont=*-Heavy,
-  AutoFakeSlant=true]{SourceHanSansSC}  
+  UprightFont=NotoSansCJKsc-Bold,
+  AutoFakeSlant=true]{NotoSansSC}  
 
+\newCJKfontfamily[NotoSansSCBlack]\NotoSansSCBlack[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=NotoSansCJKsc-Black,
+  AutoFakeSlant=true]{NotoSansSC}  
+
+\newCJKfontfamily[NotoSansMonoSCRegular]\NotoSansMonoSCRegular[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=NotoSansMonoCJKsc-Regular,
+  AutoFakeSlant=true]{NotoSansMonoSCRegular}
+
+\newCJKfontfamily[NotoSansMonoSCBold]\NotoSansMonoSCBold[
+  Extension=.otf,
+  Path=\cjkfonts@path/,
+  UprightFont=NotoSansMonoCJKsc-Bold,
+  AutoFakeSlant=true]{NotoSansMonoSCBold}
 
 \ifthenelse{\boolean{cjkfonts@default}}{
 
-	\setCJKmainfont[Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-\cjkfonts@mdseries,
-	  BoldFont=*-\cjkfonts@bfseries,
-	  ItalicFont=*-\cjkfonts@mdseries,
-	  BoldItalicFont=*-\cjkfonts@bfseries,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-	
-	\setCJKsansfont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-\cjkfonts@mdseries,
-	  BoldFont=*-\cjkfonts@bfseries,
-	  ItalicFont=*-\cjkfonts@mdseries,
-	  BoldItalicFont=*-\cjkfonts@bfseries,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-	
-	\setCJKmonofont[
-	  Extension=.otf,
-	  Path=\cjkfonts@path/,
-	  UprightFont=*-\cjkfonts@mdseries,
-	  BoldFont=*-\cjkfonts@bfseries,
-	  ItalicFont=*-\cjkfonts@mdseries,
-	  BoldItalicFont=*-\cjkfonts@bfseries,
-	  ItalicFeatures=FakeSlant,
-	  BoldItalicFeatures=FakeSlant]{SourceHanSansSC}
-
+  \setCJKmainfont[Extension=.otf,
+    Path=\cjkfonts@path/,
+    UprightFont=NotoSansCJKsc-\cjkfonts@mdseries,
+    BoldFont=NotoSansCJKsc-\cjkfonts@bfseries,
+    ItalicFont=NotoSansCJKsc-\cjkfonts@mdseries,
+    BoldItalicFont=NotoSansCJKsc-\cjkfonts@bfseries,
+    ItalicFeatures=FakeSlant,
+    BoldItalicFeatures=FakeSlant]{NotoSansSC}
+  
+  \setCJKsansfont[
+    Extension=.otf,
+    Path=\cjkfonts@path/,
+    UprightFont=NotoSansCJKsc-\cjkfonts@mdseries,
+    BoldFont=NotoSansCJKsc-\cjkfonts@bfseries,
+    ItalicFont=NotoSansCJKsc-\cjkfonts@mdseries,
+    BoldItalicFont=NotoSansCJKsc-\cjkfonts@bfseries,
+    ItalicFeatures=FakeSlant,
+    BoldItalicFeatures=FakeSlant]{NotoSansSC}
+  
+  \setCJKmonofont[
+    Extension=.otf,
+    Path=\cjkfonts@path/,
+    UprightFont=NotoSansMonoCJKsc-Regular,
+    BoldFont=NotoSansMonoCJKsc-Bold,
+    ItalicFont=NotoSansMonoCJKsc-Regular,
+    BoldItalicFont=NotoSansMonoCJKsc-Bold,
+    ItalicFeatures=FakeSlant,
+    BoldItalicFeatures=FakeSlant]{NotoSansMonoSC}
+  
 }{}
 
 

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-REPO_SOURCE_HAN_SANS="https://github.com/adobe-fonts/source-han-sans/archive/1.004R.tar.gz"
+NOTO_SANS_CJKSC_URL="https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKsc-hinted.zip"
+FILENAME=$(basename ${NOTO_SANS_CJKSC_URL})
 
 SYSTEM=`uname -s`
 
@@ -20,11 +21,13 @@ trap "{ cd -; rm -rf $TMPDIR; exit 255; }" SIGINT
 cd $TMPDIR  # switch to temp dir
 echo "Change to ${TMPDIR}"
 
-# Get Source Han Sans
-curl -L ${REPO_SOURCE_HAN_SANS} | tar zx
-cp -f source-han-sans-*/OTF/SimplifiedChinese/*.otf ${FONTDIR}
+# Get NotoSans
+curl -o $FILENAME ${NOTO_SANS_CJKSC_URL}
+unzip $FILENAME
+cp -f *.otf ${FONTDIR}
 
 cd -  # back to current folder
 rm -rf $TMPDIR
 
 exit 0
+
